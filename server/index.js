@@ -4,9 +4,13 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
+// initialize the post routes route.
+import postRoutes from './routes/userPosts.js';
 // initialize app express instance
 const app = express();
-// middle ware
+// middle wares
+// specify posts routes 'https:PORT/posts'
+app.use('/posts', postRoutes);
 // allow size for some images
 app.use(bodyParser.json({ limit: '25mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '25mb', extended: true }));
