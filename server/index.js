@@ -9,12 +9,12 @@ import postRoutes from './routes/userPosts.js';
 // initialize app express instance
 const app = express();
 // middle wares
-// specify posts routes 'https:PORT/posts'
-app.use('/posts', postRoutes);
-// allow size for some images
+// size limits for some images
 app.use(bodyParser.json({ limit: '25mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '25mb', extended: true }));
 app.use(cors());
+// specify posts routes 'https:PORT/posts'
+app.use('/posts', postRoutes);
 // mongodb connection and server port variables
 const CONNECTION_URL = process.env.CONNECTION_URL;
 const PORT = process.env.PORT;
